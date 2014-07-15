@@ -1,12 +1,15 @@
 ﻿(function () {
     var onGameOver = function () {
+        console.log(arguments);
         alert("thanks for playing");
     };
 
     $(function () {
-        window.Landmine.start({
+        var game = window.Landmine.start({
             canvas: document.getElementById("landmine"),
             gameOver: onGameOver
         });
+
+        game.on("gameOver", onGameOver);
     });
 })();
