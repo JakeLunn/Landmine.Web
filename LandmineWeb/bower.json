@@ -1,0 +1,20 @@
+{
+  "name": "LandmineWeb",
+  "version": "0.0.0",
+  "authors": [
+    "Matt Burke <burkemd1+github@gmail.com>"
+  ],
+  "description": "ASP.NET MVC Landmine App",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "landmine.js": "ssh://akatakritos@mattburkedev.com/home/akatakritos/repos/landmine.js.git"
+  }
+}
