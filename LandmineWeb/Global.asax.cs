@@ -18,6 +18,10 @@ namespace LandmineWeb
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+#if DEBUG
+            System.Web.Optimization.BundleTable.EnableOptimizations = false;
+#endif
         }
     }
 }

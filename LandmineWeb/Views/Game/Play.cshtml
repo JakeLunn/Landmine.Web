@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Play";
+}
+
+<h2>Landmine</h2>
+
+@Html.Partial("_GameCanvas")
+
+@section scripts {
+    @Scripts.Render("~/bundles/landmine-integration")
+}
