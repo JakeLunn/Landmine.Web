@@ -3,29 +3,31 @@
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h1>Landmine</h1>
+    <p class="lead">A simple game of find the mine. Don't get blown up!</p>
+    <p><a href="@Url.Action("Play", "Game")" class="btn btn-primary btn-lg">Play &raquo;</a></p>
 </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
+        <h2>Simple</h2>
         <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            Navigate the mine field and dig holes where you think its safe. You can place flags to help you remember what you've
+            puzzled out.
         </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <p><a class="btn btn-default" href="@Url.Action("Play", "Game")">Play Now &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <h2>Get the High Score</h2>
+        <p>How high of a score can you collect? You're working against the clock and players world-wide so move quickly!</p>
+        <p><a class="btn btn-default" href="@Url.Action("Play", "Game")">Play Now &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <h2>Ad Free</h2>
+        <p>
+            This game is never going to make me any money, so why ruin your experience with ads that try to steal your
+            info? Ad free forever!
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("Play", "Game")">Play Now &raquo;</a></p>
     </div>
 </div>
