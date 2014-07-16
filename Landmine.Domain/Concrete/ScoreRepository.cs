@@ -1,4 +1,5 @@
 ﻿using Landmine.Domain.Abstract;
+using Landmine.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,12 +16,18 @@ namespace Landmine.Domain.Concrete
             context = new LandmineDataContext();
         }
 
-        public IQueryable<Entities.Score> Scores
+        public IQueryable<Score> Scores
         {
             get
             {
                 return context.Scores;
             }
+        }
+
+        public void SaveScore(Score score)
+        {
+            context.Scores.Add(score);
+            context.SaveChanges();
         }
     }
 }

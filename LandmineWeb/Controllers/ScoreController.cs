@@ -34,21 +34,12 @@ namespace LandmineWeb.Controllers
             return query.Take(count);
         }
 
-        // GET: api/Score
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET: api/Score/5
-        public string Get(int id)
-        {
-            return "value";
-        }
+        
 
         // POST: api/Score
-        public void Post([FromBody]string value)
+        public void Post([FromBody]Score score)
         {
+            repository.SaveScore(score);
         }
 
         // PUT: api/Score/5
