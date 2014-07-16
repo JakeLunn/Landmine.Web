@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Landmine.Domain.Concrete
 {
-    public class LandmineDataContext : IScoreRepository
+    public class ScoreRepository : IScoreRepository
     {
         private LandmineDataContext context;
-        public LandmineDataContext()
+        public ScoreRepository()
         {
             context = new LandmineDataContext();
         }

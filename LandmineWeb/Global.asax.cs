@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LandmineWeb.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -22,6 +23,9 @@ namespace LandmineWeb
 #if DEBUG
             System.Web.Optimization.BundleTable.EnableOptimizations = false;
 #endif
+
+            ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
+            GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(NinjectKernelFactory.Kernel);
         }
     }
 }

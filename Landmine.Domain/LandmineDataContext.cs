@@ -10,6 +10,11 @@ namespace Landmine.Domain
 {
     public class LandmineDataContext : DbContext
     {
+        public LandmineDataContext()
+           : base("DefaultConnection")
+        {
+
+        }
         public DbSet<Score> Scores { get; set; }
     }
 }
