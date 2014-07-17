@@ -7,6 +7,15 @@
 
 @Html.Partial("_GameCanvas")
 
+@using(Html.BeginModal("Game Over", okText: "OK", closeText: "Close"))
+{
+    <p>Enter your Nickname to record your score!</p>
+    <form id="highscoreForm">
+        <input name="Nickname" type="text" />
+    </form>
+    <div id="high-scores"></div>
+}
+
 @section scripts {
     @Scripts.Render("~/bundles/landmine-integration")
 }

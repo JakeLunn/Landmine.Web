@@ -16,6 +16,7 @@ namespace LandmineWeb
                         "~/bower_components/landmine.js/dist/landmine.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/landmine-integration").Include(
+                        "~/Scripts/LM.modal.js",
                         "~/Scripts/LandmineIntegration/main.js"));
 
 
