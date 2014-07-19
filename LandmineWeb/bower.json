@@ -15,7 +15,6 @@
     "tests"
   ],
   "dependencies": {
-    "landmine.js": "ssh://akatakritos@mattburkedev.com/home/akatakritos/repos/landmine.js.git",
-    "q": "~2.0.0"
+    "landmine.js": "ssh://akatakritos@mattburkedev.com/home/akatakritos/repos/landmine.js.git"
   }
 }
