@@ -9,11 +9,30 @@
 
 @using(Html.BeginModal("Game Over", okText: "OK", closeText: "Close"))
 {
-    <p>Enter your Nickname to record your score!</p>
-    <form id="highscoreForm">
-        <input name="Nickname" type="text" />
-    </form>
-    <div id="high-scores"></div>
+    <table>
+        <thead>
+            <tr>
+                <th>Nickname</th>
+                <th>Score</th>
+                <th>Level</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: sortedScores">
+            <tr>
+                <th>
+                    <span data-bind="ifnot: IsEditable">
+                        <span data-bind="text: Nickname"></span>
+                    </span>
+                    <span data-bind="if: IsEditable">
+                        <input data-bind="value: Nickname" />
+                    </span>
+                </th>
+                <th data-bind="text: Value"></th>
+                <th data-bind="text: Level"></th>
+
+            </tr>
+        </tbody>
+    </table>
 }
 
 @section scripts {

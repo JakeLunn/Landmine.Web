@@ -191,7 +191,6 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\LandmineIntegration\main.js" />
     <Content Include="Scripts\LM.modal.js" />
     <Content Include="Scripts\LM\LM.modal.js" />
     <Content Include="Scripts\LM\LM.modal.js.map" />
@@ -239,6 +238,9 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\LM\Binding\HighScore.ts" />
+    <TypeScriptCompile Include="Scripts\LM\Binding\HighScoreList.ts" />
+    <TypeScriptCompile Include="Scripts\LM\Integration\HighScoreIntegration.ts" />
     <TypeScriptCompile Include="Scripts\LM\LM.modal.ts" />
     <TypeScriptCompile Include="Scripts\LM\LM.Score.ts" />
     <TypeScriptCompile Include="Scripts\q.d.ts" />

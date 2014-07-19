@@ -21,8 +21,8 @@ module LM {
             return deferred.promise;
         }
 
-        export function highest(): Q.Promise<Score> {
-            var deferred = Q.defer<Score>();
+        export function highest(): Q.Promise<Score[]> {
+            var deferred = Q.defer<Score[]>();
 
             $.getJSON('/api/scores/high').then((data) => {
                 deferred.resolve(data);

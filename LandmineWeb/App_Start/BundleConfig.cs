@@ -17,9 +17,12 @@ namespace LandmineWeb
 
             bundles.Add(new ScriptBundle("~/bundles/landmine-integration").Include(
                         "~/Scripts/q.js",
+                        "~/Scripts/knockout.min.js",
                         "~/Scripts/LM/LM.modal.js",
                         "~/Scripts/LM/LM.Score.js",
-                        "~/Scripts/LandmineIntegration/main.js"));
+                        "~/Scripts/LM/Binding/HighScore.js",
+                        "~/Scripts/LM/Binding/HighScoreList.js",
+                        "~/Scripts/LM/Integration/HighScoreIntegration.js"));
 
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
