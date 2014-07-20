@@ -26,6 +26,8 @@ namespace LandmineWeb
 
             ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
             GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(NinjectKernelFactory.Kernel);
+
+            GlobalFilters.Filters.Add(new RollbarExceptionFilter());
         }
     }
 }
