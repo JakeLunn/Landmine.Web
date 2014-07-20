@@ -7,14 +7,30 @@ interface JQuery {
 }
 module LM {
     export module Modal {
-        export interface ModalSuccessCallback { (JQuery) : void  }
+        export interface ModalSuccessCallback { (JQuery): void }
+        export interface ModalClosedCallback { (JQuery): void }
 
         var $modal: JQuery;
         var successCallback: ModalSuccessCallback;
+        var closedCallback: ModalClosedCallback;
 
         export interface ModalOptions {
             success?: ModalSuccessCallback;
             title?: string;
+            closed?: ModalClosedCallback;
+        }
+
+        function createModal() : void {
+            $modal = $('.modal').first();
+                $modal.modal({
+                show: false
+            });
+
+                $modal.on("hidden.bs.modal", () => {
+                if (closedCallback) {
+                    closedCallback($modal);
+                }
+            });
         }
 
         export function show(options?: ModalOptions): JQuery {
@@ -22,7 +38,9 @@ module LM {
                 options = {};
             }
 
-            $modal = $('.modal').first();
+            if (!$modal) {
+                createModal();
+            }
 
             if (options.title) {
                 $modal.find('.modal-title').html(options.title);
@@ -32,7 +50,11 @@ module LM {
                 successCallback = options.success;
             }
 
-            $modal.modal();
+            if (options.closed) {
+                closedCallback = options.closed;
+            }
+
+            $modal.modal('show');
 
             return $modal;
         }

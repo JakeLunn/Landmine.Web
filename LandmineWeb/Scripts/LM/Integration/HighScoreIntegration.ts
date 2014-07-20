@@ -1,27 +1,35 @@
 ﻿/// <reference path="../../knockout.d.ts" />
 module LM {
 
+    interface GameOverParams {
+        score: number;
+        level: number;
+    }
+
     export module Integration {
 
         var game: any; //Landmine game
 
         export function startGame() {
-            (<any>window).Landmine.start({
-                canvas: document.getElementById("landmine")
+            game = (<any>window).Landmine.start({
+                canvas: document.getElementById("landmine"),
             });
+
+            game.on("game:over", onGameOver);
         }
 
+        function onGameOver(score : GameOverParams) {
+            console.log(score);
 
+            var dialog = LM.Integration.HighScoreDialog.show({
+                Nickname: "",
+                Value: score.score,
+                Level: score.level
+            });
+        }
     }
 }
 
 LM.Integration.startGame();
 
-var score = {
-    Value: Math.floor(Math.random() * 1000),
-    Level: 3,
-    Nickname: ""
-};
 
-var dialog = new LM.Integration.HighScoreDialog(score);
-dialog.show();

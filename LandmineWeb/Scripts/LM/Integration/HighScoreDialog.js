@@ -1,40 +1,69 @@
 ﻿var LM;
 (function (LM) {
     (function (Integration) {
-        var HighScoreDialog = (function () {
-            function HighScoreDialog(score) {
-                this.userScore = new LM.Binding.HighScore(score, true);
-                this.viewModel = new LM.Binding.HighScoreList([]);
-                this.viewModel.scores.push(this.userScore);
+        (function (HighScoreDialog) {
+            var userScore;
+            var viewModel;
 
-                ko.applyBindings(this.viewModel, $('.modal')[0]);
+            function setUp() {
+                userScore = new LM.Binding.HighScore({
+                    Nickname: '',
+                    Value: 0,
+                    Level: 1
+                }, true);
+
+                viewModel = new LM.Binding.HighScoreList([]);
+                viewModel.scores.push(userScore);
+
+                ko.applyBindings(viewModel, $('.modal')[0]);
             }
-            HighScoreDialog.prototype.show = function () {
-                var _this = this;
+
+            function resetUserScore(score) {
+                userScore.Level(score.Level);
+                userScore.Nickname(score.Nickname);
+                userScore.Value(score.Value);
+            }
+
+            function resetViewModel() {
+                while (viewModel.scores().length > 0) {
+                    viewModel.scores.pop();
+                }
+                viewModel.scores.push(userScore);
+                viewModel.loading(true);
+            }
+
+            function show(score) {
+                debugger;
+                resetUserScore(score);
+                resetViewModel();
+
                 LM.Modal.show({
                     success: function () {
-                        if (_this.userScore.Nickname() !== "") {
-                            LM.Scores.save(_this.userScore.toScore());
+                        if (userScore.Nickname() !== "") {
+                            LM.Scores.save(userScore.toScore());
                         }
+                    },
+                    closed: function () {
                     }
                 });
 
-                this.load();
-            };
+                load();
+            }
+            HighScoreDialog.show = show;
 
-            HighScoreDialog.prototype.load = function () {
-                var _this = this;
+            function load() {
                 LM.Scores.highest().then(function (scores) {
                     scores.forEach(function (score) {
-                        _this.viewModel.scores.push(new LM.Binding.HighScore(score, false));
+                        viewModel.scores.push(new LM.Binding.HighScore(score, false));
                     });
 
-                    _this.viewModel.loading(false);
+                    viewModel.loading(false);
                 });
-            };
-            return HighScoreDialog;
-        })();
-        Integration.HighScoreDialog = HighScoreDialog;
+            }
+
+            setUp();
+        })(Integration.HighScoreDialog || (Integration.HighScoreDialog = {}));
+        var HighScoreDialog = Integration.HighScoreDialog;
     })(LM.Integration || (LM.Integration = {}));
     var Integration = LM.Integration;
 })(LM || (LM = {}));

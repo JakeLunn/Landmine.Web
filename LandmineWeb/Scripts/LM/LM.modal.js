@@ -4,13 +4,29 @@ var LM;
     (function (Modal) {
         var $modal;
         var successCallback;
+        var closedCallback;
+
+        function createModal() {
+            $modal = $('.modal').first();
+            $modal.modal({
+                show: false
+            });
+
+            $modal.on("hidden.bs.modal", function () {
+                if (closedCallback) {
+                    closedCallback($modal);
+                }
+            });
+        }
 
         function show(options) {
             if (!options) {
                 options = {};
             }
 
-            $modal = $('.modal').first();
+            if (!$modal) {
+                createModal();
+            }
 
             if (options.title) {
                 $modal.find('.modal-title').html(options.title);
@@ -20,7 +36,11 @@ var LM;
                 successCallback = options.success;
             }
 
-            $modal.modal();
+            if (options.closed) {
+                closedCallback = options.closed;
+            }
+
+            $modal.modal('show');
 
             return $modal;
         }

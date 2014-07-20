@@ -1,40 +1,68 @@
 ﻿module LM {
     export module Integration {
-        export class HighScoreDialog {
+        export module HighScoreDialog {
 
-            private userScore: LM.Binding.HighScore;
-            private viewModel: LM.Binding.HighScoreList;
+            var userScore: LM.Binding.HighScore;
+            var viewModel: LM.Binding.HighScoreList;
 
-            constructor(score: Score) {
-                this.userScore = new LM.Binding.HighScore(score, true);
-                this.viewModel = new LM.Binding.HighScoreList([]);
-                this.viewModel.scores.push(this.userScore);
+            function setUp() {
+                userScore = new LM.Binding.HighScore({
+                    Nickname: '',
+                    Value: 0,
+                    Level: 1
+                }, true);
 
-                ko.applyBindings(this.viewModel, $('.modal')[0]);
+                viewModel = new LM.Binding.HighScoreList([]);
+                viewModel.scores.push(userScore);
+
+                ko.applyBindings(viewModel, $('.modal')[0]);
             }
 
-            public show(): void {
+            function resetUserScore(score: Score): void {
+                userScore.Level(score.Level);
+                userScore.Nickname(score.Nickname);
+                userScore.Value(score.Value);
+            }
+
+            function resetViewModel(): void {
+                while (viewModel.scores().length > 0) {
+                    viewModel.scores.pop();
+                }
+                viewModel.scores.push(userScore);
+                viewModel.loading(true);
+            }
+
+            export function show(score: Score): void {
+                debugger;
+                resetUserScore(score);
+                resetViewModel();
+
                 LM.Modal.show({
                     success: () => {
-                        if (this.userScore.Nickname() !== "") {
-                            LM.Scores.save(this.userScore.toScore());
+                        if (userScore.Nickname() !== "") {
+                            LM.Scores.save(userScore.toScore());
                         }
+                    },
+                    closed: () => {
+
                     }
                 });
 
-                this.load();
+                load();
             }
 
-            private load(): void {
+            function load(): void {
                 LM.Scores.highest().then((scores) => {
                     scores.forEach((score) => {
-                        this.viewModel.scores.push(
+                        viewModel.scores.push(
                             new Binding.HighScore(score, false));
                     });
 
-                    this.viewModel.loading(false);
+                    viewModel.loading(false);
                 });
             }
+
+            setUp();
         }
     }
 } 
