@@ -13,11 +13,18 @@ namespace LandmineWeb
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.LowercaseUrls = true;
+
             routes.MapRoute(
                 name: "Play",
                 url: "play",
                 defaults: new { controller = "Game", action = "Play" });
 
+            routes.MapRoute(
+                name: "Leaderboard",
+                url: "leaderboard",
+                defaults: new { controller = "Leaderboard", action = "Index" });
+                
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

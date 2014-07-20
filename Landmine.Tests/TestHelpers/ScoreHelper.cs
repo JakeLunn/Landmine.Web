@@ -11,13 +11,12 @@ namespace Landmine.Tests.TestHelpers
     {
         public static IQueryable<Score> FakeScores(int count = 10)
         {
-            var rand = new Random();
             return Enumerable.Range(1, count).Select(i => new Score
             {
                 ScoreId = i,
-                Level = rand.Next(5),
-                Nickname = "Player " + i,
-                Value = rand.Next(400)
+                Level = Faker.RandomNumber.Next(1, 5),
+                Nickname = Faker.Name.First(),
+                Value = Faker.RandomNumber.Next(1, 400)
             }).AsQueryable();
         }
     }

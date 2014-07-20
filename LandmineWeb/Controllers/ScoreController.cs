@@ -42,11 +42,6 @@ namespace LandmineWeb.Controllers
             repository.SaveScore(score);
         }
 
-        // PUT: api/Score/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
         // DELETE: api/Score/5
         public void Delete(int id)
         {
