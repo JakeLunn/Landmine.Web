@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using LandmineWeb.App_Start;
+using System.Web;
 using System.Web.Mvc;
 
 namespace LandmineWeb
@@ -7,7 +8,8 @@ namespace LandmineWeb
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
+            filters.Add(new RollbarExceptionFilter());
+
         }
     }
 }

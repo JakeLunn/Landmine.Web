@@ -27,6 +27,7 @@ namespace LandmineWeb
 
             ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
             GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(NinjectKernelFactory.Kernel);
+
         }
 
     }
