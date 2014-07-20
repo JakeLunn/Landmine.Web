@@ -179,6 +179,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <None Include="Properties\PublishProfiles\landmine.pubxml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -190,6 +191,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout.min.js" />
     <Content Include="Scripts\LM.modal.js" />
     <Content Include="Scripts\modernizr-2.7.2.js" />
     <Content Include="Scripts\q.js" />
@@ -233,6 +235,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\knockout.d.ts" />
     <TypeScriptCompile Include="Scripts\LM\Binding\HighScore.ts" />
     <TypeScriptCompile Include="Scripts\LM\Binding\HighScoreList.ts" />
     <TypeScriptCompile Include="Scripts\LM\Integration\HighScoreDialog.ts" />
