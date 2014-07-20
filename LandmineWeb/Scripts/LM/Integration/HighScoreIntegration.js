@@ -16,24 +16,12 @@ var LM;
 
 LM.Integration.startGame();
 
-LM.Scores.highest().then(function (scores) {
-    var model = new LM.Binding.HighScoreList(scores);
-    var score = {
-        Value: Math.floor(Math.random() * 1000),
-        Level: 3,
-        Nickname: ""
-    };
+var score = {
+    Value: Math.floor(Math.random() * 1000),
+    Level: 3,
+    Nickname: ""
+};
 
-    var yourscore = new LM.Binding.HighScore(score, true);
-    model.scores.push(yourscore);
-    ko.applyBindings(model, $('.modal')[0]);
-
-    LM.Modal.show({
-        success: function () {
-            LM.Scores.save(yourscore.toScore());
-        }
-    });
-}).fail(function (error) {
-    console.log(error);
-});
+var dialog = new LM.Integration.HighScoreDialog(score);
+dialog.show();
 //# sourceMappingURL=HighScoreIntegration.js.map

@@ -22,6 +22,7 @@ namespace LandmineWeb
                         "~/Scripts/LM/LM.Score.js",
                         "~/Scripts/LM/Binding/HighScore.js",
                         "~/Scripts/LM/Binding/HighScoreList.js",
+                        "~/Scripts/LM/Integration/HighScoreDialog.js",
                         "~/Scripts/LM/Integration/HighScoreIntegration.js"));
 
 

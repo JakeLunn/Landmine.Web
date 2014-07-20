@@ -1,6 +1,5 @@
 ﻿/// <reference path="../../knockout.d.ts" />
 /// <reference path="HighScore.ts" />
-var HighScore = LM.Binding.HighScore;
 var LM;
 (function (LM) {
     (function (Binding) {
@@ -16,6 +15,8 @@ var LM;
                         return right.Value() - left.Value();
                     });
                 });
+
+                this.loading = ko.observable(true);
             }
             return HighScoreList;
         })();

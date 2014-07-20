@@ -240,6 +240,7 @@
     <TypeScriptCompile Include="Scripts\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\LM\Binding\HighScore.ts" />
     <TypeScriptCompile Include="Scripts\LM\Binding\HighScoreList.ts" />
+    <TypeScriptCompile Include="Scripts\LM\Integration\HighScoreDialog.ts" />
     <TypeScriptCompile Include="Scripts\LM\Integration\HighScoreIntegration.ts" />
     <TypeScriptCompile Include="Scripts\LM\LM.modal.ts" />
     <TypeScriptCompile Include="Scripts\LM\LM.Score.ts" />
