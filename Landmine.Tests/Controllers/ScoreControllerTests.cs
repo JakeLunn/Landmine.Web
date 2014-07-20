@@ -9,6 +9,7 @@ using LandmineWeb.Controllers;
 using Landmine.Domain.Abstract;
 using Landmine.Domain.Entities;
 using System.Web.Http;
+using Landmine.Tests.TestHelpers;
 
 namespace Landmine.Tests.Controllers
 {
@@ -27,7 +28,7 @@ namespace Landmine.Tests.Controllers
         private ScoreController createController()
         {
             var mock = new Mock<IScoreRepository>();
-            mock.Setup(m => m.Scores).Returns(fakeScores(10));
+            mock.Setup(m => m.Scores).Returns(ScoreHelper.FakeScores(10));
             var controller = new ScoreController(mock.Object);
             return controller;
         }
@@ -35,7 +36,7 @@ namespace Landmine.Tests.Controllers
         [Test]
         public void GetHighScoresReturnsTopScoresInDescendingOrder()
         {
-            var scores = fakeScores(10).ToArray().AsQueryable(); //create a query-able view of the same list
+            var scores = ScoreHelper.FakeScores(10).ToArray().AsQueryable(); //create a query-able view of the same list
             var mock = new Mock<IScoreRepository>();
             mock.Setup(m => m.Scores).Returns(scores);
             var controller = new ScoreController(mock.Object);
@@ -60,16 +61,6 @@ namespace Landmine.Tests.Controllers
             Assert.That(ex.Response.StatusCode == System.Net.HttpStatusCode.BadRequest);
         }
 
-        private IQueryable<Score> fakeScores(int count = 10)
-        {
-            var rand = new Random();
-            return Enumerable.Range(1, count).Select(i => new Score
-            {
-                ScoreId = i,
-                Level = rand.Next(5),
-                Nickname = "Player " + i,
-                Value = rand.Next(400)
-            }).AsQueryable();
-        }
+        
     }
 }
