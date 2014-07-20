@@ -16,6 +16,7 @@
 # Include dlls if they're in the CommonReferences directory
 !*CommonReferences/*.dll
 
+TestResult.xml
 *.user
 # secrets
 secrets.config
