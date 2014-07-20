@@ -1,4 +1,5 @@
 ﻿using LandmineWeb.App_Start;
+using RollbarSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,13 @@ namespace LandmineWeb
             GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(NinjectKernelFactory.Kernel);
 
             GlobalFilters.Filters.Add(new RollbarExceptionFilter());
+        }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            var exception = Server.GetLastError().GetBaseException();
+
+            (new RollbarClient()).SendException(exception);
         }
     }
 }
