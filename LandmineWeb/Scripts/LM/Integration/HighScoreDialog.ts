@@ -33,7 +33,6 @@
             }
 
             export function show(score: Score): void {
-                debugger;
                 resetUserScore(score);
                 resetViewModel();
 
