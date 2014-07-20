@@ -179,6 +179,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HtmlHelpers\Modal.cs" />
+    <Compile Include="Environment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -237,6 +238,8 @@
     <Content Include="Views\Game\Play.cshtml" />
     <Content Include="Views\Shared\_GameCanvas.cshtml" />
     <Content Include="Views\Leaderboard\Index.cshtml" />
+    <Content Include="Views\Shared\_GoogleAnalytics.cshtml" />
+    <Content Include="Views\Shared\_Rollbar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
