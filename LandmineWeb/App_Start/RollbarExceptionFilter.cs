@@ -11,8 +11,8 @@ namespace LandmineWeb.App_Start
     {
         public void OnException(ExceptionContext filterContext)
         {
-            if (filterContext.ExceptionHandled)
-                return;
+            //if (filterContext.ExceptionHandled)
+            //    return;
 
             (new RollbarClient()).SendException(filterContext.Exception);
         }
