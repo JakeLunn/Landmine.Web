@@ -1,10 +1,12 @@
 ﻿@model PagedList.IPagedList<Landmine.Domain.Entities.Score>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Leaderboard: How do you stack up?";
+    ViewBag.MetaDescription = "Compare youself to people across the globe! Because we all need to keep measure our self-worth against accomplisments of strangers.";
 }
 
-<h2>Index</h2>
+<h2>Leaderboard - How do you measure up?</h2>
+<small>Thats right, your self-worth is dependent on how you compare to strangers in another state.</small>
 @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
 
 <table class="table table-striped table-condensed">
