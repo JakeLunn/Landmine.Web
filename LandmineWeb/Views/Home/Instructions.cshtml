@@ -1,0 +1,52 @@
+﻿@model LandmineWeb.Models.InstructionsViewModel
+
+@{
+    ViewBag.Title = "Instructions";
+}
+
+<h2>How To Play</h2>
+
+
+<div class="row">
+    <div class="col-lg-6">
+        <h3>Back Story <small>(There's always a back story)</small></h3>
+        <p>
+            A long time ago there was an evil warlord. He was really mean and nasty, and he hated the towns-people of
+            Clichédia. He was at war with their chief, and desired to kill the chief's daughter, the beautiful princess
+            Predictable. So he set out to plant mines all over her favorite playing fields...
+        </p>
+
+        <p>Oh, nevermind. This is a simple, stupid, and frankly, <i>derivative</i>, game. You don't need a backstory.</p>
+
+        <h3>Goal <small>(What's the point???)</small></h3>
+        <p>
+            Your goal is to clear the field of mines. You are armed only with a pocket full of flags and your trusty
+            mine detector. Your mine detector tells you how many mines are in immediately adjacent space.
+        </p>
+
+        <p>Unfortunately, it only works when its placed below ground.</p>
+
+        <p>You'll have to dig a hole first!</p>
+
+        <div class="well">
+            <img src="~/Content/img/will-get-difficult.png" class="img-responsive img-rounded" />
+        </div>
+        <div class="alert alert-info"><strong>Hint:</strong> the first column of the field is always mine free!</div>
+
+    </div>
+    <div class="col-lg-6">
+        <h3>Controls <small>(Press these buttons to play)</small></h3>
+        <p>Use the following keyboard controls in your quest to rid the field of dangerous explosives.</p>
+        <table class="table table-striped">
+            @foreach (var instruction in Model.KeyDescriptions)
+            {
+                <tr>
+
+                    <td class="keys"><span class="key @(instruction.IsWide ? "wide" : "")">@Html.Raw(instruction.Key)</span></td>
+                    <td>@instruction.Description</td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

@@ -2,10 +2,9 @@
 @{
     ViewBag.Title = "Play";
 }
-
-<h2>Landmine</h2>
-
+<div class="spacer">&nbsp;</div>
 @Html.Partial("_GameCanvas")
+<div class="alert alert-info"><strong>Tip:</strong> You may have to click inside the game field to give it keyboard focus.</div>
 
 @using(Html.BeginModal("Game Over", okText: "OK", closeText: "Close"))
 {

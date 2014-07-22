@@ -1,3 +1,23 @@
 ﻿img.ad {
     width: 100%;
 }
+
+td.keys {
+    text-align: center;
+}
+span.key {
+    display:inline-block;
+    text-align: center;
+    padding: 5px;
+    border-top: 1px solid black;
+    border-right: 4px solid gray;
+    border-bottom: 4px solid gray;
+    border-left: 1px solid black;
+    border-radius: 5px;
+    min-width: 2.5em;
+    min-height: 2.5em;
+
+    &.wide {
+        min-width: 5em;
+    }
+}

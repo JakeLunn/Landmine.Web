@@ -24,6 +24,11 @@ namespace LandmineWeb
                 name: "Leaderboard",
                 url: "leaderboard",
                 defaults: new { controller = "Leaderboard", action = "Index" });
+
+            routes.MapRoute(
+                name: "Instructions",
+                url: "how-to-play",
+                defaults: new { controller = "Home", action = "Instructions" });
                 
             routes.MapRoute(
                 name: "Default",

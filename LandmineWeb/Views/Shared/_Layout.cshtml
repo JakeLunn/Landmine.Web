@@ -23,8 +23,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Leaderboard", "Index", "Leaderboard")</li>
+                    <li>@Html.RouteLink("Instructions", routeName: "Instructions")</li>
+                    <li>@Html.RouteLink("Leaderboard", routeName: "Leaderboard")</li>
+                    <li>@Html.RouteLink("Play Now", routeName: "Play")</li>
                 </ul>
             </div>
         </div>
