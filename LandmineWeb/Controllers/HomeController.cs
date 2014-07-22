@@ -12,10 +12,5 @@ namespace LandmineWeb.Controllers
         {
             return View();
         }
-
-        public ActionResult Throw()
-        {
-            throw new Exception("Testing Rollbar integration");
-        }
     }
 }
