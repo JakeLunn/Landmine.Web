@@ -1,17 +1,16 @@
-﻿using Landmine.Domain.Abstract;
-using Landmine.Domain.Concrete;
-using Ninject;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+
+using Ninject;
 
 namespace LandmineWeb.App_Start
 {
     public class NinjectControllerFactory : DefaultControllerFactory
     {
-        private IKernel ninject;
+        private readonly IKernel ninject;
+
         public NinjectControllerFactory()
         {
             ninject = NinjectKernelFactory.Kernel;
@@ -21,7 +20,5 @@ namespace LandmineWeb.App_Start
         {
             return controllerType == null ? null : (IController)ninject.Get(controllerType);
         }
-
-       
     }
 }

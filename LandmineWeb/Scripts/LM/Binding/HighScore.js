@@ -1,5 +1,6 @@
-﻿var LM;
+var LM;
 (function (LM) {
+    var Binding;
     (function (Binding) {
         var HighScore = (function () {
             function HighScore(score, isEditable) {
@@ -18,7 +19,6 @@
             return HighScore;
         })();
         Binding.HighScore = HighScore;
-    })(LM.Binding || (LM.Binding = {}));
-    var Binding = LM.Binding;
+    })(Binding = LM.Binding || (LM.Binding = {}));
 })(LM || (LM = {}));
 //# sourceMappingURL=HighScore.js.map

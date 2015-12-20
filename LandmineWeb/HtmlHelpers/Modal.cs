@@ -1,26 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace LandmineWeb.HtmlHelpers
 {
     public class Modal : IDisposable
     {
-        
-
-        private HtmlHelper helper;
-        private string title;
-        private string closeText;
-        private string okText;
+        private readonly HtmlHelper _helper;
+        private readonly string _title;
+        private readonly string _closeText;
+        private readonly string _okText;
 
         public Modal(HtmlHelper helper, string title, string closeText, string okText)
         {
-            this.title = title;
-            this.closeText = closeText;
-            this.okText = okText;
-            this.helper = helper;
+            _title = title;
+            _closeText = closeText;
+            _okText = okText;
+            _helper = helper;
 
             helper.ViewContext.Writer.Write(
                 @"<div class='modal fade'>
@@ -28,13 +25,14 @@ namespace LandmineWeb.HtmlHelpers
                     <div class='modal-content'>
                       <div class='modal-header'>
                         <button type='button' class='close' data-dismiss='modal'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>
-                        <h4 class='modal-title'>{0}</h4>
+                        <h4 class='modal-_title'>{0}</h4>
                       </div>
-                      <div class='modal-body'>", title);
+                      <div class='modal-body'>", _title);
         }
+
         public void Dispose()
         {
-            helper.ViewContext.Writer.Write(
+            _helper.ViewContext.Writer.Write(
                 @"</div>
                   <div class='modal-footer'>
                     <button type='button' class='btn btn-default' data-dismiss='modal'>{0}</button>
@@ -42,7 +40,7 @@ namespace LandmineWeb.HtmlHelpers
                   </div>
                 </div>
               </div>
-            </div>", closeText, okText);
+            </div>", _closeText, _okText);
         }
     }
 
