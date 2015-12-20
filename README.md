@@ -1,4 +1,4 @@
 Landmine.Web
 ============
 
-ASP.NET MVC5 App for http://www.landminegame.com
+ASP.NET MVC5 App for http://landminegame.com
