@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -11,10 +10,7 @@ using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
 
-using Landmine.Domain.Abstract;
 using Landmine.Domain.Concrete;
-
-using LandmineWeb.App_Start;
 
 namespace LandmineWeb
 {
