@@ -3,15 +3,17 @@ using Landmine.Domain.Entities;
 using Landmine.Tests.TestHelpers;
 using LandmineWeb.Controllers;
 using Moq;
-using NUnit.Framework;
 using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
+using NFluent;
+
+using Xunit;
+
 namespace Landmine.Tests.Controllers
 {
-    [TestFixture]
     public class LeaderboardControllerTests
     {
         private static LeaderboardController createController(int totalScores = 10)
@@ -25,30 +27,31 @@ namespace Landmine.Tests.Controllers
             return controller;
         }
 
-        [Test]
+        [Fact]
         public void ReturnsAPagedList()
         {
             var controller = createController(10);
 
             var results = (IPagedList<Score>)controller.Index(page: 1).Model;
 
-            Assert.That(results.Count() == 3);
-            Assert.That(results.TotalItemCount == 10);
-            Assert.That(results.PageCount == 4);
+            Check.That(results).HasSize(3);
+            Check.That(results.TotalItemCount).IsEqualTo(10);
+            Check.That(results.PageCount).IsEqualTo(4);
         }
 
+        [Fact]
         public void SecondPageOnlyHasTwo()
         {
             var controller = createController(5);
 
             var results = (IPagedList<Score>)controller.Index(page: 2).Model;
 
-            Assert.That(results.Count() == 2);
-            Assert.That(results.TotalItemCount == 5);
-            Assert.That(results.PageCount == 2);
+            Check.That(results).HasSize(2);
+            Check.That(results.TotalItemCount).IsEqualTo(5);
+            Check.That(results.PageCount).IsEqualTo(2);
         }
 
-        [Test]
+        [Fact]
         public void ResultsAreSortedDescendingByScore()
         {
             var controller = createController(10);
@@ -57,7 +60,7 @@ namespace Landmine.Tests.Controllers
             var scores = results.Select(s => s.Value).ToArray();
             var sortedScores = scores.OrderByDescending(i => i).ToArray();
 
-            Assert.That(scores, Is.EqualTo(sortedScores));
+            Check.That(scores).ContainsExactly(sortedScores);
         }
 
     }

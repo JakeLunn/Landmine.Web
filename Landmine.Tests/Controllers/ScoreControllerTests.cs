@@ -1,28 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using Moq;
-using NUnit.Framework;
 using LandmineWeb.Controllers;
 using Landmine.Domain.Abstract;
-using Landmine.Domain.Entities;
+
 using System.Web.Http;
 using Landmine.Tests.TestHelpers;
 
+using NFluent;
+
+using Xunit;
+
 namespace Landmine.Tests.Controllers
 {
-    [TestFixture]
     public class ScoreControllerTests
     {
-        [Test]
+        [Fact]
         public void GetHighScoresReturnsNumberOfProvidedScores()
         {
             var controller = createController();
 
-            Assert.That(controller.GetHighScores(3).Count(), Is.EqualTo(3));
-            Assert.That(controller.GetHighScores(7).Count(), Is.EqualTo(7));
+            Check.That(controller.GetHighScores(3)).HasSize(3);
+            Check.That(controller.GetHighScores(7)).HasSize(7);
         }
 
         private ScoreController createController()
@@ -33,7 +34,7 @@ namespace Landmine.Tests.Controllers
             return controller;
         }
 
-        [Test]
+        [Fact]
         public void GetHighScoresReturnsTopScoresInDescendingOrder()
         {
             var scores = ScoreHelper.FakeScores(10).ToArray().AsQueryable(); //create a query-able view of the same list
@@ -43,13 +44,12 @@ namespace Landmine.Tests.Controllers
 
             var result = controller.GetHighScores(3);
 
-            Assert.That(result.ToArray(), Is.EqualTo(scores
-                                                        .OrderByDescending(s => s.Value)
-                                                        .Take(3)
-                                                        .ToArray()));
+            Check.That(result).ContainsExactly(scores
+                .OrderByDescending(s => s.Value)
+                .Take(3));
         }
 
-        [Test]
+        [Fact]
         public void GetHighScoreThrows400IfCountGreaterThan50()
         {
             var controller = createController();
@@ -58,9 +58,10 @@ namespace Landmine.Tests.Controllers
                 controller.GetHighScores(100);
             });
 
-            Assert.That(ex.Response.StatusCode == System.Net.HttpStatusCode.BadRequest);
+
+            Check.That(ex.Response.StatusCode).IsEqualTo(System.Net.HttpStatusCode.BadRequest);
         }
 
-        
+
     }
 }
