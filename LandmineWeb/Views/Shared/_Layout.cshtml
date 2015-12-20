@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using LandmineWeb.Helpers
+<!DOCTYPE html>
 <html>
 <head prefix="og: http://ogp.me/ns#">
     <meta charset="utf-8" />
@@ -11,14 +12,14 @@
     <!-- for Facebook -->
     <meta property="og:title" content="@ViewBag.Title" />
     <meta property="og:type" content="article" />
-    <meta property="og:image" content="~/Content/img/flags.png" />
+    <meta property="og:image" content="@Url.AbsoluteContent("~/Content/img/flags.png")" />
     <meta property="og:description" content="@ViewBag.MetaDescription" />
 
     <!-- for Twitter -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="@ViewBag.Title" />
     <meta name="twitter:description" content="@ViewBag.MetaDescription" />
-    <meta name="twitter:image" content="~/Content/img/flags.png" />
+    <meta name="twitter:image" content="@Url.AbsoluteContent("~/Content/img/flags.png")" />
 
     @Styles.Render("~/Content/css")
     @Html.Partial("_Rollbar")
