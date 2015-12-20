@@ -9,6 +9,7 @@ using System.Web.Routing;
 
 using Autofac;
 using Autofac.Integration.Mvc;
+using Autofac.Integration.WebApi;
 
 using Landmine.Domain.Abstract;
 using Landmine.Domain.Concrete;
@@ -45,6 +46,7 @@ namespace LandmineWeb
 
             // Register your MVC controllers.
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
+            builder.RegisterApiControllers(typeof(MvcApplication).Assembly);
 
             // OPTIONAL: Register model binders that require DI.
             //builder.RegisterModelBinders(Assembly.GetExecutingAssembly());
@@ -61,6 +63,8 @@ namespace LandmineWeb
 
             // Set the dependency resolver to be Autofac.
             var container = builder.Build();
+
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
 
