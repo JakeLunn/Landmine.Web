@@ -11,8 +11,13 @@ namespace Landmine.Domain
         public LandmineDataContext()
            : base("DefaultConnection")
         {
-
         }
+
         public DbSet<Score> Scores { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.HasDefaultSchema("lndm");
+        }
     }
 }
