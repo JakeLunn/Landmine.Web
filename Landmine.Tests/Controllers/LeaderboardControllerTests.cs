@@ -8,9 +8,6 @@ using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
 
 namespace Landmine.Tests.Controllers
 {
@@ -62,6 +59,6 @@ namespace Landmine.Tests.Controllers
 
             Assert.That(scores, Is.EqualTo(sortedScores));
         }
-        
+
     }
 }
