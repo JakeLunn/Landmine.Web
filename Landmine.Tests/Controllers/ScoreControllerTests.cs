@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
-using Moq;
-using LandmineWeb.Controllers;
-using Landmine.Domain.Abstract;
-
 using System.Web.Http;
+
+using AutoMoq;
+
+using Landmine.Domain.Abstract;
 using Landmine.Tests.TestHelpers;
+
+using LandmineWeb.Controllers;
 
 using NFluent;
 
@@ -17,32 +18,37 @@ namespace Landmine.Tests.Controllers
 {
     public class ScoreControllerTests
     {
+        private static ScoreController CreateController()
+        {
+            var mocker = new AutoMoqer();
+
+            mocker.GetMock<IScoreRepository>()
+                .Setup(m => m.Scores).Returns(ScoreHelper.FakeScores(10));
+
+            return mocker.Create<ScoreController>();
+        }
+
         [Fact]
         public void GetHighScoresReturnsNumberOfProvidedScores()
         {
-            var controller = createController();
+            var subject = CreateController();
 
-            Check.That(controller.GetHighScores(3)).HasSize(3);
-            Check.That(controller.GetHighScores(7)).HasSize(7);
-        }
-
-        private ScoreController createController()
-        {
-            var mock = new Mock<IScoreRepository>();
-            mock.Setup(m => m.Scores).Returns(ScoreHelper.FakeScores(10));
-            var controller = new ScoreController(mock.Object);
-            return controller;
+            Check.That(subject.GetHighScores(3)).HasSize(3);
+            Check.That(subject.GetHighScores(7)).HasSize(7);
         }
 
         [Fact]
         public void GetHighScoresReturnsTopScoresInDescendingOrder()
         {
-            var scores = ScoreHelper.FakeScores(10).ToArray().AsQueryable(); //create a query-able view of the same list
-            var mock = new Mock<IScoreRepository>();
-            mock.Setup(m => m.Scores).Returns(scores);
-            var controller = new ScoreController(mock.Object);
+            var mocker = new AutoMoqer();
 
-            var result = controller.GetHighScores(3);
+            var scores = ScoreHelper.FakeScores(10).ToArray().AsQueryable(); //create a query-able view of the same list
+            mocker.GetMock<IScoreRepository>()
+                .Setup(m => m.Scores).Returns(scores);
+
+            var subject = mocker.Create<ScoreController>();
+
+            var result = subject.GetHighScores(3);
 
             Check.That(result).ContainsExactly(scores
                 .OrderByDescending(s => s.Value)
@@ -52,16 +58,11 @@ namespace Landmine.Tests.Controllers
         [Fact]
         public void GetHighScoreThrows400IfCountGreaterThan50()
         {
-            var controller = createController();
+            var subject = CreateController();
 
-            var ex = Assert.Throws<HttpResponseException>(() => {
-                controller.GetHighScores(100);
-            });
-
+            var ex = Assert.Throws<HttpResponseException>(() => { subject.GetHighScores(100); });
 
             Check.That(ex.Response.StatusCode).IsEqualTo(System.Net.HttpStatusCode.BadRequest);
         }
-
-
     }
 }
