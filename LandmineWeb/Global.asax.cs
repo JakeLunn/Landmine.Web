@@ -12,6 +12,8 @@ using Autofac.Integration.WebApi;
 
 using Landmine.Domain.Concrete;
 
+using Microsoft.ApplicationInsights.Extensibility;
+
 namespace LandmineWeb
 {
     public class MvcApplication : System.Web.HttpApplication
@@ -26,6 +28,7 @@ namespace LandmineWeb
 
 #if DEBUG
             System.Web.Optimization.BundleTable.EnableOptimizations = false;
+            TelemetryConfiguration.Active.DisableTelemetry = true;
 #endif
 
             AutofacConfig.Register();
