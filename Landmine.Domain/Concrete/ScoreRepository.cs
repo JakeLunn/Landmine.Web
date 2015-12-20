@@ -9,6 +9,7 @@ namespace Landmine.Domain.Concrete
     public class ScoreRepository : IScoreRepository
     {
         private readonly LandmineDataContext _context;
+
         public ScoreRepository()
         {
             _context = new LandmineDataContext();

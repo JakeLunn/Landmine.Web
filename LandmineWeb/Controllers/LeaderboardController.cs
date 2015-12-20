@@ -11,13 +11,13 @@ namespace LandmineWeb.Controllers
 {
     public class LeaderboardController : Controller
     {
-        public int ScoresPerPage { get; set; }
+        public int ScoresPerPage { get; set; } = 20;
+
         private readonly IScoreRepository _repository;
 
         public LeaderboardController(IScoreRepository repository)
         {
-            this._repository = repository;
-            this.ScoresPerPage = 20;
+            _repository = repository;
         }
 
         public ViewResult Index(int page = 1)

@@ -45,6 +45,7 @@ namespace LandmineWeb.Controllers
         // DELETE: api/Score/5
         public void Delete(int id)
         {
+            throw new NotImplementedException();
         }
     }
 }

@@ -20,27 +20,27 @@ namespace LandmineWeb.HtmlHelpers
             _helper = helper;
 
             helper.ViewContext.Writer.Write(
-                @"<div class='modal fade'>
+                $@"<div class='modal fade'>
                   <div class='modal-dialog'>
                     <div class='modal-content'>
                       <div class='modal-header'>
                         <button type='button' class='close' data-dismiss='modal'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>
-                        <h4 class='modal-_title'>{0}</h4>
+                        <h4 class='modal-_title'>{_title}</h4>
                       </div>
-                      <div class='modal-body'>", _title);
+                      <div class='modal-body'>");
         }
 
         public void Dispose()
         {
             _helper.ViewContext.Writer.Write(
-                @"</div>
+                $@"</div>
                   <div class='modal-footer'>
-                    <button type='button' class='btn btn-default' data-dismiss='modal'>{0}</button>
-                    <button type='button' class='btn btn-primary'>{1}</button>
+                    <button type='button' class='btn btn-default' data-dismiss='modal'>{_closeText}</button>
+                    <button type='button' class='btn btn-primary'>{_okText}</button>
                   </div>
                 </div>
               </div>
-            </div>", _closeText, _okText);
+            </div>");
         }
     }
 
