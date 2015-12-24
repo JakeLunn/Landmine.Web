@@ -9,13 +9,14 @@
 <small>Thats right, your self-worth is dependent on how you compare to strangers in another state.</small>
 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 
-@using (Html.BeginForm("Level", "Leaderboard", FormMethod.Get, new { @class = "form form-inline" }))
+@using (Html.BeginForm("Level", "Leaderboard", FormMethod.Get, new { @class = "form form-inline", @id = "levelFilter" }))
 {
     //Level Filter
     <div class="form-group">
-        <input type="text" placeholder="Filter by Level" class="form-control" name="level" />
+        <input data-val="true" data-val-required="Please fill out the box before submitting." data-val-number="Please enter a number." id="tbLevel" type="text" placeholder="Filter by Level" class="form-control" name="level" />
         <input type="submit" value="Filter" class="btn btn-primary" />
     </div>
+    @Html.ValidationMessage("level", new { @class = "validation-message"} )
 }
 <table class="table table-striped table-condensed">
     <thead>
@@ -38,3 +39,8 @@
     </tbody>
 
 </table>
+
+@section scripts {
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}
