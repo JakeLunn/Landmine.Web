@@ -1,11 +1,11 @@
 ﻿@model PagedList.IPagedList<Landmine.Domain.Entities.Score>
 
 @{
-    ViewBag.Title = "Leaderboard: How do you stack up?";
+    ViewBag.Title = "Leaderboard by Level: How do you stack up?";
     ViewBag.MetaDescription = "Compare youself to people across the globe! Because we all need to keep measure our self-worth against accomplishments of strangers.";
 }
 
-<h2>Leaderboard - How do you measure up?</h2>
+<h2>Leaderboard - For Level @ViewBag.CurrentLevel</h2>
 <small>Thats right, your self-worth is dependent on how you compare to strangers in another state.</small>
 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 
@@ -17,7 +17,6 @@
             <td>Score</td>
         </tr>
     </thead>
-
     <tbody>
         @foreach (var score in Model)
         {

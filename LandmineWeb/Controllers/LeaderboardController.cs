@@ -30,5 +30,19 @@ namespace LandmineWeb.Controllers
 
             return View(scores);
         }
+
+        public ViewResult Level(int level, int page = 1)
+        {
+            var query = from s in _repository.Scores
+                        where s.Level == level
+                        orderby s.Value descending
+                        select s;
+
+            ViewBag.CurrentLevel = level; 
+
+            var scores = query.ToPagedList(page, ScoresPerPage);
+
+            return View(scores);
+        }
     }
 }
