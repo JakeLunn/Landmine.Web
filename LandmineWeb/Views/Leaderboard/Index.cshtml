@@ -9,6 +9,14 @@
 <small>Thats right, your self-worth is dependent on how you compare to strangers in another state.</small>
 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 
+@using (Html.BeginForm("Level", "Leaderboard", FormMethod.Get, new { @class = "form form-inline" }))
+{
+    //Level Filter
+    <div class="form-group">
+        <input type="text" placeholder="Filter by Level" class="form-control" name="level" />
+        <input type="submit" value="Filter" class="btn btn-primary" />
+    </div>
+}
 <table class="table table-striped table-condensed">
     <thead>
         <tr>
