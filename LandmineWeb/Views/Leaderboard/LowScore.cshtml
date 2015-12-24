@@ -1,25 +1,13 @@
 ﻿@model PagedList.IPagedList<Landmine.Domain.Entities.Score>
 
 @{
-    ViewBag.Title = "Leaderboard: How do you stack up?";
+    ViewBag.Title = "Leaderboard: Who's shootin for the bottom?";
     ViewBag.MetaDescription = "Compare youself to people across the globe! Because we all need to keep measure our self-worth against accomplishments of strangers.";
 }
 
-<h2>Leaderboard - How do you measure up?</h2>
+<h2>Leaderboard - Shooting for the bottom?</h2>
 <small>Thats right, your self-worth is dependent on how you compare to strangers in another state.</small>
 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
-
-
-
-@using (Html.BeginForm("Level", "Leaderboard", FormMethod.Get, new { @class = "form form-inline", @id = "levelFilter" }))
-{
-    //Level Filter
-    <div class="form-group">
-        <input data-val="true" data-val-required="Please fill out the box before submitting." data-val-number="Please enter a number." id="tbLevel" type="text" placeholder="Filter by Level" class="form-control" name="level" />
-        <input type="submit" value="Filter" class="btn btn-primary" />
-    </div>
-    @Html.ValidationMessage("level", new { @class = "validation-message"} )
-}
 <div class="pull-right">
     <a href="@Url.Action("Index")">Highest Scores</a> |
     <a href="@Url.Action("LowScore")">Lowest Scores</a>
@@ -32,7 +20,6 @@
             <td>Score</td>
         </tr>
     </thead>
-
     <tbody>
         @foreach (var score in Model)
         {

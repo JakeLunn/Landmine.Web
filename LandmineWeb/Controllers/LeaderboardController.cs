@@ -31,6 +31,17 @@ namespace LandmineWeb.Controllers
             return View(scores);
         }
 
+        public ViewResult LowScore(int page = 1)
+        {
+            var query = from s in _repository.Scores
+                        orderby s.Value ascending //from lowest to highest
+                        select s;
+
+            var scores = query.ToPagedList(page, ScoresPerPage);
+
+            return View(scores);
+        }
+
         public ViewResult Level(int level, int page = 1)
         {
             var query = from s in _repository.Scores
