@@ -304,6 +304,7 @@
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Views\Shared\_AppInsights.cshtml" />
     <Content Include="Views\Leaderboard\Level.cshtml" />
+    <Content Include="Views\Shared\_ScoreTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
