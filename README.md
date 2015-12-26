@@ -2,6 +2,8 @@
 
 ASP.NET MVC5 App for http://landminegame.com
 
+[![Build status](https://ci.appveyor.com/api/projects/status/m3wito7vhc03sd87/branch/master?svg=true)](https://ci.appveyor.com/project/akatakritos/landmine-web/branch/master)
+
 ## Building
 
 This solution requires Visual Studio 2015 and uses C# 6 features. You can use 
