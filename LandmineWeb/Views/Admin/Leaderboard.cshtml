@@ -1,0 +1,43 @@
+﻿@model PagedList.IPagedList<Landmine.Domain.Entities.Score>
+@{
+    ViewBag.Title = "Leaderboard";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="text-center">Leaderboard</h2>
+
+<div class="col-md-6 col-md-offset-3">
+    @if (ViewBag.AdminMessage != null)
+    {
+        //This area is used to display messages from actions that redirect to this page.
+        //Example: If a score is deleted, it redirects to this page, and the "Score Deleted" message is displayed.
+        <div class="alert alert-info alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            @ViewBag.AdminMessage
+        </div>
+    }
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Level</th>
+                <th>Score</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var score in Model)
+            {
+                <tr>
+                    <td>@score.Nickname</td>
+                    <td>@score.Level</td>
+                    <td>@score.Value</td>
+                    <td>
+                        <a onclick="return confirm('Are you sure you want to delete this score?')" href="@Url.Action("DeleteScore", "Admin", new { id = score.ScoreId })">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

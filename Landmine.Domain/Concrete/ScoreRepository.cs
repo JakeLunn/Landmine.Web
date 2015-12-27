@@ -22,5 +22,11 @@ namespace Landmine.Domain.Concrete
             _context.Scores.Add(score);
             _context.SaveChanges();
         }
+
+        public void DeleteScore(Score score)
+        {
+            _context.Scores.Remove(score);
+            _context.SaveChanges();
+        }
     }
 }

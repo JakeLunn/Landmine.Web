@@ -10,5 +10,6 @@ namespace Landmine.Domain.Abstract
     {
         IQueryable<Score> Scores { get; }
         void SaveScore(Score score);
+        void DeleteScore(Score score);
     }
 }

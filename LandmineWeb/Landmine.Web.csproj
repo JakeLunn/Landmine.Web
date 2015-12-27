@@ -207,6 +207,7 @@
     <Compile Include="App_Start\RollbarExceptionFilter.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LeaderboardController.cs" />
@@ -224,6 +225,7 @@
   <ItemGroup>
     <Content Include="bower_components\landmine.js\dist\landmine.js" />
     <Content Include="bower_components\landmine.js\dist\landmine.min.js" />
+    <Content Include="Content\admin.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -305,6 +307,9 @@
     <Content Include="Views\Shared\_AppInsights.cshtml" />
     <Content Include="Views\Leaderboard\Level.cshtml" />
     <Content Include="Views\Shared\_ScoreTable.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Leaderboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
