@@ -305,6 +305,7 @@
     <Content Include="Views\Shared\_AppInsights.cshtml" />
     <Content Include="Views\Leaderboard\Level.cshtml" />
     <Content Include="Views\Shared\_ScoreTable.cshtml" />
+    <Content Include="Views\Leaderboard\LowScore.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
